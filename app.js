@@ -145,7 +145,7 @@ function renderControl(s) {
         <img src="${presentacion}" alt="Presentación del desafío"
           style="width:100%;max-width:500px;border-radius:12px;margin:12px auto;display:block;">
 
-        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;">
           <div style="flex:1;min-width:130px;">
             <img src="${opcionA}" alt="Opción A" style="width:100%;border-radius:10px;">
           </div>
