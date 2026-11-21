@@ -12,7 +12,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyASuOtqVLXK4iQDu68dyOoDZQeOpRPO53",
+  apiKey: "AIzaSyASuOtqVLXK4iQDu68dyOoDZQeOpRPO53M",
   authDomain: "mision-18.firebaseapp.com",
   databaseURL: "https://mision-18-default-rtdb.firebaseio.com",
   projectId: "mision-18",
