@@ -27,16 +27,16 @@ const db = getDatabase(app);
 const stateRef = ref(db, "rooms/mision18");
 
 const levels = [
-["EL COMIENZO","Toda gran aventura comienza con una decisiÛn. øQuÈ tipo de agente vas a ser?",["EXPLORADOR","AGENTE SECRETO"]],
-["LA ENERGÕA","La misiÛn exige estar preparado. Cada movimiento cuenta. ElegÌ cÛmo enfrentar el desafÌo.",["ADRENALINA","TRANQUILIDAD"]],
-["EL INSTINTO","No siempre hay tiempo para pensar. A veces, la primera decisiÛn es la m·s importante.",["PENSAR R¡PIDO","SEGUIR LA INTUICI”N"]],
-["EL CAMINO","El destino todavÌa es desconocido. Solo hay una forma de descubrir quÈ te espera.",["EL DESCONOCIDO","EL INESPERADO"]],
-["EL ⁄LTIMO PASO","Llegaste hasta ac·. Ahora es momento de demostrar de quÈ est·s hecho.",["IR POR TODO","SIN MIRAR ATR¡S"]],
-["C”DIGO SECRETO","El sistema detectÛ dos protocolos disponibles. Seleccion· uno para continuar.",["C”DIGO ALFA","C”DIGO OMEGA"]],
-["ZONA DE RIESGO","La operaciÛn contin˙a en territorio desconocido. Tu prÛximo movimiento est· por definirse.",["LA CIUDAD NOCTURNA","LA BASE SECRETA"]],
-["EL TIEMPO CORRE","El reloj est· en marcha. Cada segundo nos acerca al momento decisivo.",["OPERACI”N REL¡MPAGO","OPERACI”N SILENCIOSA"]],
-["LA ⁄LTIMA FRONTERA","Una ˙ltima frontera te separa del final. No pierdas la concentraciÛn.",["EL PORTAL DE LUZ","LA PUERTA FINAL"]],
-["MISI”N CUMPLIDA","Agente AgustÌn... todos los sistemas est·n listos. Es hora de desbloquear el protocolo final.",["ACTIVAR PROTOCOLO FINAL","DESBLOQUEAR ARCHIVO"]]
+["EL COMIENZO","Toda gran aventura comienza con una decisi√≥n. ¬øQu√© tipo de agente vas a ser?",["EXPLORADOR","AGENTE SECRETO"]],
+["LA ENERG√çA","La misi√≥n exige estar preparado. Cada movimiento cuenta. Eleg√≠ c√≥mo enfrentar el desaf√≠o.",["ADRENALINA","TRANQUILIDAD"]],
+["EL INSTINTO","No siempre hay tiempo para pensar. A veces, la primera decisi√≥n es la m√°s importante.",["PENSAR R√ÅPIDO","SEGUIR LA INTUICI√ìN"]],
+["EL CAMINO","El destino todav√≠a es desconocido. Solo hay una forma de descubrir qu√© te espera.",["EL DESCONOCIDO","EL INESPERADO"]],
+["EL √öLTIMO PASO","Llegaste hasta ac√°. Ahora es momento de demostrar de qu√© est√°s hecho.",["IR POR TODO","SIN MIRAR ATR√ÅS"]],
+["C√ìDIGO SECRETO","El sistema detect√≥ dos protocolos disponibles. Seleccion√° uno para continuar.",["C√ìDIGO ALFA","C√ìDIGO OMEGA"]],
+["ZONA DE RIESGO","La operaci√≥n contin√∫a en territorio desconocido. Tu pr√≥ximo movimiento est√° por definirse.",["LA CIUDAD NOCTURNA","LA BASE SECRETA"]],
+["EL TIEMPO CORRE","El reloj est√° en marcha. Cada segundo nos acerca al momento decisivo.",["OPERACI√ìN REL√ÅMPAGO","OPERACI√ìN SILENCIOSA"]],
+["LA √öLTIMA FRONTERA","Una √∫ltima frontera te separa del final. No pierdas la concentraci√≥n.",["EL PORTAL DE LUZ","LA PUERTA FINAL"]],
+["MISI√ìN CUMPLIDA","Agente Agust√≠n... todos los sistemas est√°n listos. Es hora de desbloquear el protocolo final.",["ACTIVAR PROTOCOLO FINAL","DESBLOQUEAR ARCHIVO"]]
 ];
 
 const isControl = location.pathname.replace(/\/+$/, "") === "/control";
@@ -80,30 +80,30 @@ function renderScreen(s) {
   if (!s.started) {
     screenContent.innerHTML = `
       <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
-      <h1>MISI”N <span>18</span></h1>
-      <p class="lead">AGENTE AGUSTÕN. UNA TRANSMISI”N ESPECIAL EST¡ POR COMENZAR.</p>
-      <div class="final-mark">PREPARANDO<br>OPERACI”N</div>`;
+      <h1>MISI√ìN <span>18</span></h1>
+      <p class="lead">AGENTE AGUST√çN. UNA TRANSMISI√ìN ESPECIAL EST√Å POR COMENZAR.</p>
+      <div class="final-mark">PREPARANDO<br>OPERACI√ìN</div>`;
   } else if (s.finished) {
     screenContent.innerHTML = `
-      <div class="kicker">TRANSMISI”N FINAL</div>
-      <div class="final-mark">OPERACI”N<br>FINALIZADA</div>
-      <h2>°FELICES 18, AGUSTÕN!</h2>
-      <p class="lead">SALÕ Y DESCUBRÕ LO QUE TE EST¡ ESPERANDO.</p>
-      <div class="big-number">3 ∑ 2 ∑ 1</div>
-      <p class="lead">FIN DE LA TRANSMISI”N</p>`;
+      <div class="kicker">TRANSMISI√ìN FINAL</div>
+      <div class="final-mark">OPERACI√ìN<br>FINALIZADA</div>
+      <h2>¬°FELICES 18, AGUST√çN!</h2>
+      <p class="lead">SAL√ç Y DESCUBR√ç LO QUE TE EST√Å ESPERANDO.</p>
+      <div class="big-number">3 ¬∑ 2 ¬∑ 1</div>
+      <p class="lead">FIN DE LA TRANSMISI√ìN</p>`;
   } else {
     const l = levels[s.level];
     const pct = (s.level + 1) * 10;
     screenContent.innerHTML = `
-      <div class="big-number">DESAFÕO ${String(s.level+1).padStart(2,"0")} / 10</div>
+      <div class="big-number">DESAF√çO ${String(s.level+1).padStart(2,"0")} / 10</div>
       <div class="meter"><span style="width:${pct}%"></span></div>
       <div class="kicker">NIVEL ${String(s.level+1).padStart(2,"0")}</div>
       <h2>${l[0]}</h2>
       <p class="lead">${l[1]}</p>
       <div class="choice-grid">
-        ${l[2].map((c,i) => `<div class="choice"><small>OPCI”N 0${i+1}</small><strong>${c}</strong></div>`).join("")}
+        ${l[2].map((c,i) => `<div class="choice"><small>OPCI√ìN 0${i+1}</small><strong>${c}</strong></div>`).join("")}
       </div>
-      ${s.choice ? `<p class="status">DECISI”N REGISTRADA: ${s.choice}</p>` : ""}`;
+      ${s.choice ? `<p class="status">DECISI√ìN REGISTRADA: ${s.choice}</p>` : ""}`;
   }
 }
 
@@ -112,9 +112,9 @@ function renderControl(s) {
     controlContent.innerHTML = `
       <div class="control-card">
         <div class="kicker">LISTO PARA INICIAR</div>
-        <h2>AGENTE AGUSTÕN</h2>
-        <p>Cuando todos estÈn mirando el proyector, toc· el botÛn para iniciar la transmisiÛn.</p>
-        <button id="start">INICIAR MISI”N</button>
+        <h2>AGENTE AGUST√çN</h2>
+        <p>Cuando todos est√©n mirando el proyector, toc√° el bot√≥n para iniciar la transmisi√≥n.</p>
+        <button id="start">INICIAR MISI√ìN</button>
       </div>`;
     document.getElementById("start").onclick = () => performAction("start");
 
@@ -122,7 +122,7 @@ function renderControl(s) {
     controlContent.innerHTML = `
       <div class="control-card">
         <div class="kicker">PROTOCOLO COMPLETADO</div>
-        <h2>MISI”N FINALIZADA</h2>
+        <h2>MISI√ìN FINALIZADA</h2>
         <p>La pantalla principal ya muestra el mensaje de cierre.</p>
         <button class="secondary" id="reset">REINICIAR DEMO</button>
       </div>`;
@@ -132,14 +132,14 @@ function renderControl(s) {
     const l = levels[s.level];
     controlContent.innerHTML = `
       <div class="control-card">
-        <div class="kicker">DESAFÕO ${s.level+1} DE 10</div>
+        <div class="kicker">DESAF√çO ${s.level+1} DE 10</div>
         <h2>${l[0]}</h2>
         <p>${l[1]}</p>
         <div class="control-buttons">
           ${l[2].map((c,i) => `<button class="${i===1?"secondary":""}" data-choice="${c}" ${s.choice?"disabled":""}>${c}</button>`).join("")}
         </div>
-        <div class="status">${s.choice ? "ELECCI”N REGISTRADA: "+s.choice : "ELEGÕ UNA OPCI”N PARA CONTINUAR"}</div>
-        <button id="next" ${s.choice?"":"disabled"}>${s.level===9?"FINALIZAR MISI”N":"SIGUIENTE DESAFÕO"}</button>
+        <div class="status">${s.choice ? "ELECCI√ìN REGISTRADA: "+s.choice : "ELEG√ç UNA OPCI√ìN PARA CONTINUAR"}</div>
+        <button id="next" ${s.choice?"":"disabled"}>${s.level===9?"FINALIZAR MISI√ìN":"SIGUIENTE DESAF√çO"}</button>
       </div>`;
 
     controlContent.querySelectorAll("[data-choice]").forEach(b => {
@@ -189,7 +189,7 @@ async function performAction(action, extra = {}) {
       return s;
     });
   } catch (e) {
-    alert("No se pudo guardar el cambio. Revis· la conexiÛn a Internet.");
+    alert("No se pudo guardar el cambio. Revis√° la conexi√≥n a Internet.");
   }
 }
 
@@ -215,20 +215,20 @@ function listenToGame() {
         lastEvent = s.event_id;
 
         if (s.last_event === "start") {
-          speak("AtenciÛn... AtenciÛn... Agente AgustÌn, si est·s escuchando este mensaje, significa que has sido seleccionado. Hoy no es un dÌa cualquiera. Una nueva etapa est· por comenzar. Diez desafÌos. Diez decisiones. Una misiÛn. øEst·s preparado?");
+          speak("Atenci√≥n... Atenci√≥n... Agente Agust√≠n, si est√°s escuchando este mensaje, significa que has sido seleccionado. Hoy no es un d√≠a cualquiera. Una nueva etapa est√° por comenzar. Diez desaf√≠os. Diez decisiones. Una misi√≥n. ¬øEst√°s preparado?");
         } else if (s.last_event === "choice") {
-          speak("DecisiÛn registrada. No hay respuestas incorrectas, agente. Prepar·te para el siguiente desafÌo.");
+          speak("Decisi√≥n registrada. No hay respuestas incorrectas, agente. Prepar√°te para el siguiente desaf√≠o.");
         } else if (s.last_event === "next" && s.level >= 0) {
           speak(levels[s.level][0] + ". " + levels[s.level][1]);
         } else if (s.last_event === "finish") {
-          speak("Agente AgustÌn. MisiÛn cumplida. Dieciocho aÒos. Una nueva aventura comienza. Tres... dos... uno... SalÌ y descubrÌ lo que te est· esperando. Felices dieciocho.");
+          speak("Agente Agust√≠n. Misi√≥n cumplida. Dieciocho a√±os. Una nueva aventura comienza. Tres... dos... uno... Sal√≠ y descubr√≠ lo que te est√° esperando. Felices dieciocho.");
         }
       }
     }
   }, error => {
     console.error(error);
     const connection = document.getElementById("connection");
-    if (connection) connection.textContent = "ERROR DE CONEXI”N";
+    if (connection) connection.textContent = "ERROR DE CONEXI√ìN";
   });
 }
 
@@ -243,7 +243,7 @@ loginForm.addEventListener("submit", async event => {
       document.getElementById("password").value
     );
   } catch (e) {
-    loginError.textContent = "No se pudo ingresar. Revis· el correo y la contraseÒa.";
+    loginError.textContent = "No se pudo ingresar. Revis√° el correo y la contrase√±a.";
   }
 });
 
