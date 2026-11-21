@@ -39,7 +39,7 @@ const levels = [
 ["MISIÓN CUMPLIDA","Agente Agustín... todos los sistemas están listos. Es hora de desbloquear el protocolo final.",["ACTIVAR PROTOCOLO FINAL","DESBLOQUEAR ARCHIVO"]]
 ];
 
-const isControl = location.pathname.replace(/\/+$/, "") === "/control";
+const isControl = new URLSearchParams(location.search).get("view") === "control";
 const loginView = document.getElementById("loginView");
 const screenView = document.getElementById("screenView");
 const controlView = document.getElementById("controlView");
