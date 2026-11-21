@@ -130,14 +130,34 @@ function renderControl(s) {
 
   } else {
     const l = levels[s.level];
+    const n = s.level + 1;
+
+    const presentacion = encodeURI(`presentacion desafio ${n}.jpg`);
+    const opcionA = encodeURI(`desafio ${n}-a.jpg`);
+    const opcionB = encodeURI(`desafio ${n}-b.jpg`);
+
     controlContent.innerHTML = `
       <div class="control-card">
-        <div class="kicker">DESAFÍO ${s.level+1} DE 10</div>
+        <div class="kicker">DESAFÍO ${n} DE 10</div>
         <h2>${l[0]}</h2>
         <p>${l[1]}</p>
+
+        <img src="${presentacion}" alt="Presentación del desafío"
+          style="width:100%;max-width:500px;border-radius:12px;margin:12px auto;display:block;">
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+          <div style="flex:1;min-width:130px;">
+            <img src="${opcionA}" alt="Opción A" style="width:100%;border-radius:10px;">
+          </div>
+          <div style="flex:1;min-width:130px;">
+            <img src="${opcionB}" alt="Opción B" style="width:100%;border-radius:10px;">
+          </div>
+        </div>
+
         <div class="control-buttons">
           ${l[2].map((c,i) => `<button class="${i===1?"secondary":""}" data-choice="${c}" ${s.choice?"disabled":""}>${c}</button>`).join("")}
         </div>
+
         <div class="status">${s.choice ? "ELECCIÓN REGISTRADA: "+s.choice : "ELEGÍ UNA OPCIÓN PARA CONTINUAR"}</div>
         <button id="next" ${s.choice?"":"disabled"}>${s.level===9?"FINALIZAR MISIÓN":"SIGUIENTE DESAFÍO"}</button>
       </div>`;
@@ -148,7 +168,6 @@ function renderControl(s) {
     document.getElementById("next").onclick = () => performAction("next");
   }
 }
-
 async function performAction(action, extra = {}) {
   try {
     await runTransaction(stateRef, current => {
