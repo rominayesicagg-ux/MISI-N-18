@@ -293,9 +293,9 @@ function renderScreen(s) {
 
   const n = s.level + 1;
   const l = levels[s.level];
-  const presentacion = encodeURI(`presentación desafío ${n}.jpg`);
-  const opcionA = encodeURI(`desafío ${n}-a.jpg`);
-  const opcionB = encodeURI(`desafío ${n}-b.jpg`);
+const presentacion = encodeURI(`presentacion desafio ${n}.jpg`);
+const opcionA = encodeURI(`desafio ${n}-a.jpg`);
+const opcionB = encodeURI(`desafio ${n}-b.jpg`);
   const pct = n * 10;
 
   screenContent.innerHTML = `
