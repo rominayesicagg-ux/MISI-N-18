@@ -243,7 +243,7 @@ loginForm.addEventListener("submit", async event => {
       document.getElementById("password").value
     );
   } catch (e) {
-    loginError.textContent = "No se pudo ingresar. Revisá el correo y la contraseña.";
+    loginError.textContent = "Error: + e.code;
   }
 });
 
