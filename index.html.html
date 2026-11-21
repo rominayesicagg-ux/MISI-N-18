@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MISIÓN 18</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main id="app" class="app">
+<div class="topline"><span>TRANSMISIÓN CLASIFICADA</span><span>28 · 11 · 2026</span></div>
+<section id="loginView" class="view login-card">
+<div class="eyebrow">ACCESO AUTORIZADO</div>
+<h1>MISIÓN <span>18</span></h1>
+<p class="lead">Ingresá con el correo y la contraseña creados para la misión.</p>
+<form id="loginForm">
+<label for="email">CORREO ELECTRÓNICO</label>
+<input id="email" type="email" required>
+<label for="password">CONTRASEÑA</label>
+<input id="password" type="password" required>
+<button type="submit">INGRESAR</button>
+<p id="loginError" class="error"></p>
+</form>
+</section>
+<section id="screenView" class="view hidden">
+<div class="eyebrow">PROTOCOLO DE OPERACIONES ESPECIALES</div>
+<div id="screenContent"></div>
+<div class="screen-foot"><span>AGENTE: AGUSTÍN</span><span id="connection">CONECTANDO...</span></div>
+</section>
+<section id="controlView" class="view hidden">
+<div class="control-head">
+<div class="eyebrow">PANEL DE CONTROL</div>
+<h1>MISIÓN <span>18</span></h1>
+<p>Control exclusivo del agente</p>
+</div>
+<div id="controlContent"></div>
+</section>
+</main>
+<script type="module" src="/app.js"></script>
+</body>
+</html>

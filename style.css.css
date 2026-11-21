@@ -1,0 +1,47 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{--red:#ef3340;--blue:#39a9ff;--ink:#07090e;--muted:#9ca7b8}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 18% 20%,#17283c 0,transparent 36%),radial-gradient(ellipse at 85% 80%,#3b1019 0,transparent 34%),#05070b;color:#f5f7fb;font-family:Inter,Arial,sans-serif;min-height:100vh}
+.app{min-height:100vh;padding:22px;position:relative;overflow:hidden}
+.app:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 0 48%,#ef334008 50%,transparent 53%),repeating-linear-gradient(0deg,transparent 0 54px,#ffffff08 55px)}
+.topline,.screen-foot{display:flex;justify-content:space-between;gap:12px;color:#aab4c3;font-size:11px;letter-spacing:.2em;font-weight:700}
+.view{position:relative;z-index:1;max-width:1100px;margin:8vh auto 0}
+.hidden{display:none!important}
+.eyebrow{color:var(--red);font-size:12px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;margin-bottom:18px}
+h1,h2,.display{font-family:"Barlow Condensed",Impact,sans-serif;text-transform:uppercase;line-height:.92;margin:0;letter-spacing:.02em}
+h1{font-size:clamp(64px,12vw,150px)}
+h1 span{color:var(--red)}
+h2{font-size:clamp(48px,8vw,100px)}
+.lead{font-size:clamp(17px,2.2vw,25px);line-height:1.55;color:#d2d9e4;max-width:760px;margin:28px 0}
+.screen-foot{margin-top:54px;border-top:1px solid #ffffff22;padding-top:15px}
+.kicker{color:var(--blue);letter-spacing:.3em;font-size:12px;font-weight:800;margin-bottom:16px}
+.big-number{font-family:"Barlow Condensed";font-size:clamp(22px,4vw,40px);color:var(--blue);letter-spacing:.18em;margin-bottom:15px}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+.choice{border:1px solid #ffffff35;background:linear-gradient(135deg,#111b2aee,#101016ee);padding:28px 22px;min-height:155px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.choice:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+.choice:nth-child(2):before{background:var(--red)}
+.choice strong{font-family:"Barlow Condensed";font-size:clamp(25px,4vw,42px);text-transform:uppercase;position:relative}
+.choice small{color:#9eacbd;letter-spacing:.16em;text-transform:uppercase;font-size:10px;position:relative}
+button{border:0;background:linear-gradient(90deg,#b81f31,#ef3340);color:white;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:17px 22px;min-height:54px;cursor:pointer;font-size:13px}
+button:disabled{opacity:.35;cursor:not-allowed}
+.secondary{background:#172536;border:1px solid #3d5b78}
+.control-head{text-align:center;margin:5vh auto 36px}
+.control-head h1{font-size:72px}
+.control-head p{color:var(--muted)}
+.control-card{max-width:650px;margin:auto;background:#0e131deF;border:1px solid #ffffff25;padding:24px}
+.control-card h2{font-size:42px;margin-bottom:12px}
+.control-card p{color:#c0cad8;line-height:1.5}
+.control-buttons{display:grid;gap:12px;margin-top:20px}
+.control-buttons button{width:100%;text-align:left;min-height:68px;font-size:15px}
+.status{color:var(--blue);font-size:12px;letter-spacing:.15em;margin:16px 0}
+.meter{height:4px;background:#ffffff20;margin:20px 0}
+.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--red));transition:width .3s}
+.final-mark{color:var(--red);font-family:"Barlow Condensed";font-size:clamp(45px,9vw,100px);font-weight:900;line-height:.95;margin:24px 0}
+.login-card{max-width:540px;margin:8vh auto;background:#0e131deF;border:1px solid #ffffff25;padding:28px}
+.login-card h1{font-size:clamp(60px,10vw,100px)}
+.login-card label{display:block;color:#aab4c3;font-size:11px;letter-spacing:.18em;font-weight:800;margin:18px 0 8px}
+.login-card input{width:100%;padding:14px;background:#080d15;border:1px solid #526174;color:#fff;font-size:16px}
+.login-card button{margin-top:22px;width:100%}
+.error{color:#ff8b93;min-height:20px;font-size:13px}
+@media(max-width:650px){.app{padding:16px}.view{margin-top:6vh}.choice-grid{grid-template-columns:1fr;gap:12px}.choice{min-height:115px;padding:20px}.screen-foot{font-size:9px}.control-head h1{font-size:58px}}
