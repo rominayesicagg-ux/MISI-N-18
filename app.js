@@ -243,7 +243,7 @@ loginForm.addEventListener("submit", async event => {
       document.getElementById("password").value
     );
   } catch (e) {
-    loginError.textContent = "Error: + e.code;
+    loginError.textContent = "Error: " + e.code;
   }
 });
 
