@@ -74,7 +74,7 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
-function renderScreen(s) {
+function renderScreenOriginal(s) {
   document.getElementById("connection").textContent = "ENLACE ACTIVO";
 
   if (!s.started) {
@@ -266,3 +266,60 @@ onAuthStateChanged(auth, user => {
     controlView.classList.add("hidden");
   }
 });
+
+
+function renderScreen(s) {
+  document.getElementById("connection").textContent = "ENLACE ACTIVO";
+
+  if (!s.started) {
+    screenContent.innerHTML = `
+      <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
+      <h1>MISIÓN <span>18</span></h1>
+      <p class="lead">AGENTE AGUSTÍN. UNA TRANSMISIÓN ESPECIAL ESTÁ POR COMENZAR.</p>
+      <div class="final-mark">PREPARANDO<br>OPERACIÓN</div>`;
+    return;
+  }
+
+  if (s.finished) {
+    screenContent.innerHTML = `
+      <div class="kicker">TRANSMISIÓN FINAL</div>
+      <div class="final-mark">OPERACIÓN<br>FINALIZADA</div>
+      <h2>¡FELICES 18, AGUSTÍN!</h2>
+      <p class="lead">SALÍ Y DESCUBRÍ LO QUE TE ESTÁ ESPERANDO.</p>
+      <div class="big-number">3 · 2 · 1</div>
+      <p class="lead">FIN DE LA TRANSMISIÓN</p>`;
+    return;
+  }
+
+  const n = s.level + 1;
+  const l = levels[s.level];
+  const presentacion = encodeURI(`presentación desafío ${n}.jpg`);
+  const opcionA = encodeURI(`desafío ${n}-a.jpg`);
+  const opcionB = encodeURI(`desafío ${n}-b.jpg`);
+  const pct = n * 10;
+
+  screenContent.innerHTML = `
+    <div class="big-number">DESAFÍO ${String(n).padStart(2,"0")} / 10</div>
+    <div class="meter"><span style="width:${pct}%"></span></div>
+    <img src="${presentacion}" alt="Presentación del desafío ${n}"
+      style="display:block;width:100%;max-height:38vh;object-fit:contain;margin:20px auto;">
+    <div class="kicker">NIVEL ${String(n).padStart(2,"0")}</div>
+    <h2>${l[0]}</h2>
+    <p class="lead">${l[1]}</p>
+    <div class="choice-grid">
+      <div class="choice">
+        <small>OPCIÓN 01</small>
+        <img src="${opcionA}" alt="${l[2][0]}"
+          style="width:100%;max-height:30vh;object-fit:contain;">
+        <strong>${l[2][0]}</strong>
+      </div>
+      <div class="choice">
+        <small>OPCIÓN 02</small>
+        <img src="${opcionB}" alt="${l[2][1]}"
+          style="width:100%;max-height:30vh;object-fit:contain;">
+        <strong>${l[2][1]}</strong>
+      </div>
+    </div>
+    ${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}
+  `;
+}
