@@ -145,19 +145,19 @@ function renderControl(s) {
         <img src="${presentacion}" alt="Presentación del desafío"
           style="width:100%;max-width:500px;border-radius:12px;margin:12px auto;display:block;">
 
-<table style="width:100%;table-layout:fixed;border-collapse:collapse;display:table;">
-  <tr>
-    <td style="width:50%;padding:5px;vertical-align:top;">
-      <img src="${opcionA}" alt="Opción A" style="display:block;width:100%;height:auto;border-radius:10px;">
-    </td>
-    <td style="width:50%;padding:5px;vertical-align:top;">
-      <img src="${opcionB}" alt="Opción B" style="display:block;width:100%;height:auto;border-radius:10px;">
-    </td>
-  </tr>
-</table>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;">
+  <div>
+    <img src="${opcionA}" alt="Opción A" style="display:block;width:100%;height:auto;border-radius:10px;">
+    ${l[2][0] ? `<button style="width:100%;margin-top:10px;" data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>` : ""}
+  </div>
+  <div>
+    <img src="${opcionB}" alt="Opción B" style="display:block;width:100%;height:auto;border-radius:10px;">
+    ${l[2][1] ? `<button style="width:100%;margin-top:10px;" class="secondary" data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>` : ""}
+  </div>
+</div>
 
         <div class="control-buttons">
-          ${l[2].map((c,i) => `<button class="${i===1?"secondary":""}" data-choice="${c}" ${s.choice?"disabled":""}>${c}</button>`).join("")}
+       ${l[2].map((c,i) => `<button style="width:100%;margin-top:10px;" class="${i===1?"secondary":""}" data-choice="${c}" ${s.choice?"disabled":""}>${c}</button>`).join("")}
         </div>
 
         <div class="status">${s.choice ? "ELECCIÓN REGISTRADA: "+s.choice : "ELEGÍ UNA OPCIÓN PARA CONTINUAR"}</div>
