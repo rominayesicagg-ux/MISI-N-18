@@ -76,6 +76,7 @@ function speak(text) {
 
 
 function renderControl(s) {
+function renderScreen(s) {
   if (!s.started) {
     controlContent.innerHTML = `
       <div class="control-card">
