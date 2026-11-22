@@ -29,7 +29,7 @@ button:disabled{opacity:.35;cursor:not-allowed}
 .control-head{text-align:center;margin:5vh auto 36px}
 .control-head h1{font-size:72px}
 .control-head p{color:var(--muted)}
-.control-card{max-width:650px;margin:auto;background:#0e131deF;border:1px solid #ffffff25;padding:24px}
+.control-card{width:95%;max-width:1100px;box-sizing:border-box;margin:auto;background:#0e131deF;border:1px solid #ffffff25;padding:24px}
 .control-card h2{font-size:42px;margin-bottom:12px}
 .control-card p{color:#c0cad8;line-height:1.5}
 .control-buttons{display:grid;gap:12px;margin-top:20px}
