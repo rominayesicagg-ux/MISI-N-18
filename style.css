@@ -104,3 +104,24 @@ button:disabled{opacity:.35;cursor:not-allowed}
 .control-buttons button {
   min-height: 52px;
 }
+.choice {
+  min-height: 65px;
+  padding: 8px 12px;
+}
+
+.lead {
+  margin: 6px 0;
+}
+
+.screen-foot {
+  margin-top: 6px;
+  padding-top: 4px;
+}
+
+.control-card {
+  padding: 10px;
+}
+
+.control-buttons button {
+  min-height: 42px;
+}
