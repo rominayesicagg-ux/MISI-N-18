@@ -76,71 +76,31 @@ function speak(text) {
 
 
 function renderControl(s) {
+  renderScreen(s);
 
-  if (!s.started) {
-    controlContent.innerHTML = `
-      <div class="control-card">
-        <div class="kicker">LISTO PARA INICIAR</div>
-        <h2>AGENTE AGUSTÍN</h2>
-        <p>Cuando todos estén mirando el proyector, tocá el botón para iniciar la transmisión.</p>
-        <button id="start">INICIAR MISIÓN</button>
-      </div>`;
-    document.getElementById("start").onclick = () => performAction("start");
+  controlContent.innerHTML = screenContent.innerHTML;
 
-  } else if (s.finished) {
-    controlContent.innerHTML = `
-      <div class="control-card">
-        <div class="kicker">PROTOCOLO COMPLETADO</div>
-        <h2>MISIÓN FINALIZADA</h2>
-        <p>La pantalla principal ya muestra el mensaje de cierre.</p>
-        <button class="secondary" id="reset">REINICIAR DEMO</button>
-      </div>`;
-    document.getElementById("reset").onclick = () => performAction("reset");
+  const start = controlContent.querySelector("#screen-start");
+  if (start) {
+    start.onclick = () => performAction("start");
+  }
 
-  } else {
-    const l = levels[s.level];
-    const n = s.level + 1;
-
-    const presentacion = encodeURI(`presentacion desafio ${n}.jpg`);
-    const opcionA = encodeURI(`desafio ${n}-a.jpg`);
-    const opcionB = encodeURI(`desafio ${n}-b.jpg`);
-
-    controlContent.innerHTML = `
-      <div class="control-card">
-        <div class="kicker">DESAFÍO ${n} DE 10</div>
-        <h2>${l[0]}</h2>
-        <p>${l[1]}</p>
-
-        <img src="${presentacion}" alt="Presentación del desafío"
-          style="width:100%;max-width:500px;border-radius:12px;margin:12px auto;display:block;">
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:900px;margin:20px auto;align-items:start;">
-  <div style="display:flex;flex-direction:column;align-items:stretch;">
-    <div style="height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-      <img src="${opcionA}" alt="Opción A" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">
-    </div>
-    ${l[2][0] ? `<button style="width:100%;min-height:55px;margin-top:10px;" data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>` : ""}
-  </div>
-  <div style="display:flex;flex-direction:column;align-items:stretch;">
-  <div style="height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-      <img src="${opcionB}" alt="Opción B" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">
-    </div>
-    ${l[2][1] ? `<button style="width:100%;min-height:55px;margin-top:10px;" class="secondary" data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>` : ""}
-  </div>
-</div>
-
-        
-
-        <div class="status">${s.choice ? "ELECCIÓN REGISTRADA: "+s.choice : "ELEGÍ UNA OPCIÓN PARA CONTINUAR"}</div>
-        <button id="next" ${s.choice?"":"disabled"}>${s.level===9?"FINALIZAR MISIÓN":"SIGUIENTE DESAFÍO"}</button>
-      </div>`;
-
-    controlContent.querySelectorAll("[data-choice]").forEach(b => {
-b.onclick = () => performAction("choose", {choice:b.dataset.choice});
+  controlContent.querySelectorAll("[data-choice]").forEach(b => {
+    b.onclick = () => performAction("choose", {
+      choice: b.dataset.choice
     });
-    document.getElementById("next").onclick = () => performAction("next");
+  });
+
+  const next = controlContent.querySelector("#screen-next");
+  if (next) {
+    next.onclick = () => performAction("next");
+  }
+   const reset = controlContent.querySelector("#screen-reset");
+  if (reset) {
+    reset.onclick = () => performAction("reset");
   }
 }
+ 
 async function performAction(action, extra = {}) {
   try {
     await runTransaction(stateRef, current => {
@@ -272,17 +232,18 @@ if (!s.started) {
 }
    
 
-  if (s.finished) {
+ if (s.finished) {
     screenContent.innerHTML = `
       <div class="kicker">TRANSMISIÓN FINAL</div>
       <div class="final-mark">OPERACIÓN<br>FINALIZADA</div>
       <h2>¡FELICES 18, AGUSTÍN!</h2>
       <p class="lead">SALÍ Y DESCUBRÍ LO QUE TE ESTÁ ESPERANDO.</p>
       <div class="big-number">3 · 2 · 1</div>
-      <p class="lead">FIN DE LA TRANSMISIÓN</p>`;
+      <p class="lead">FIN DE LA TRANSMISIÓN</p>
+      <button id="screen-reset" class="secondary">REINICIAR MISIÓN</button>`;
+    document.getElementById("screen-reset").onclick = () => performAction("reset");
     return;
   }
-
   const n = s.level + 1;
   const l = levels[s.level];
 const presentacion = encodeURI(`presentacion desafio ${n}.jpg`);
