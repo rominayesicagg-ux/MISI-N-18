@@ -157,7 +157,7 @@ function renderControl(s) {
 </div>
 
         <div class="control-buttons">
-       ${l[2].map((c,i) => `<button style="width:100%;margin-top:10px;" class="${i===1?"secondary":""}" data-choice="${c}" ${s.choice?"disabled":""}>${c}</button>`).join("")}
+      ${""}
         </div>
 
         <div class="status">${s.choice ? "ELECCIÓN REGISTRADA: "+s.choice : "ELEGÍ UNA OPCIÓN PARA CONTINUAR"}</div>
