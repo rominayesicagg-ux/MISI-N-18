@@ -180,3 +180,38 @@ button {
   min-height: 30px;
   padding: 4px 8px;
 }
+/* AJUSTE CONTROL EXCLUSIVO DEL AGENTE */
+
+.control-head {
+  margin: 2px auto 4px !important;
+}
+
+.control-card {
+  padding: 5px !important;
+  margin: 3px auto !important;
+}
+
+.control-card h2 {
+  margin: 3px 0 !important;
+  font-size: 18px;
+}
+
+.control-card p {
+  margin: 3px 0 !important;
+  line-height: 1.1;
+}
+
+.control-card img {
+  max-height: 9vh !important;
+  object-fit: contain;
+}
+
+.control-buttons {
+  gap: 4px !important;
+  margin-top: 4px !important;
+}
+
+.control-buttons button {
+  min-height: 32px !important;
+  padding: 4px 8px !important;
+}
