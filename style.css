@@ -215,3 +215,28 @@ button {
   min-height: 32px !important;
   padding: 4px 8px !important;
 }
+/* CONTROL - IMAGENES MAS GRANDES Y TEXTOS MAS COMPACTOS */
+
+.control-card img {
+  max-height: 12vh !important;
+  object-fit: contain;
+}
+
+.control-card h2 {
+  font-size: 16px !important;
+  margin: 2px 0 !important;
+}
+
+.control-card p {
+  font-size: 12px !important;
+  line-height: 1.05 !important;
+  margin: 3px 0 !important;
+}
+
+.control-card small {
+  font-size: 10px !important;
+}
+
+.control-card .choice {
+  padding: 3px !important;
+}
