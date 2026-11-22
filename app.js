@@ -76,7 +76,7 @@ function speak(text) {
 
 
 function renderControl(s) {
-function renderScreen(s) {
+
   if (!s.started) {
     controlContent.innerHTML = `
       <div class="control-card">
@@ -259,7 +259,7 @@ onAuthStateChanged(auth, user => {
   }
 });
 
-
+function renderScreen(s) {
 if (!s.started) {
   screenContent.innerHTML = `
     <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
