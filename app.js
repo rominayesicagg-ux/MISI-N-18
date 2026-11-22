@@ -79,7 +79,24 @@ function renderControl(s) {
   renderScreen(s);
 
   controlContent.innerHTML = screenContent.innerHTML;
+controlContent.querySelectorAll("img").forEach((img, index) => {
+  img.style.setProperty("height", index === 0 ? "14vh" : "13vh", "important");
+  img.style.setProperty("max-height", index === 0 ? "14vh" : "13vh", "important");
+  img.style.setProperty("object-fit", "contain", "important");
+});
 
+controlContent.querySelectorAll("h2").forEach(el => {
+  el.style.setProperty("font-size", "15px", "important");
+});
+
+controlContent.querySelectorAll(".lead, p").forEach(el => {
+  el.style.setProperty("font-size", "11px", "important");
+  el.style.setProperty("line-height", "1.05", "important");
+});
+
+controlContent.querySelectorAll(".choice small").forEach(el => {
+  el.style.setProperty("font-size", "9px", "important");
+});
   const start = controlContent.querySelector("#screen-start");
   if (start) {
     start.onclick = () => performAction("start");
