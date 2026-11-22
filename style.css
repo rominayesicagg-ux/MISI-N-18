@@ -180,74 +180,35 @@ button {
   min-height: 30px;
   padding: 4px 8px;
 }
-/* AJUSTE CONTROL EXCLUSIVO DEL AGENTE */
+/* CONTROL - IMAGENES GRANDES Y TEXTO COMPACTO */
 
-.control-head {
-  margin: 2px auto 4px !important;
+#controlView #controlContent > img {
+  height: 14vh !important;
+  max-height: 14vh !important;
+  object-fit: contain !important;
 }
 
-.control-card {
-  padding: 5px !important;
-  margin: 3px auto !important;
+#controlView #controlContent .choice img {
+  height: 13vh !important;
+  max-height: 13vh !important;
+  object-fit: contain !important;
 }
 
-.control-card h2 {
-  margin: 3px 0 !important;
-  font-size: 18px;
-}
-
-.control-card p {
-  margin: 3px 0 !important;
-  line-height: 1.1;
-}
-
-.control-card img {
-  max-height: 9vh !important;
-  object-fit: contain;
-}
-
-.control-buttons {
-  gap: 4px !important;
-  margin-top: 4px !important;
-}
-
-.control-buttons button {
-  min-height: 32px !important;
-  padding: 4px 8px !important;
-}
-/* CONTROL - IMAGENES MAS GRANDES Y TEXTOS MAS COMPACTOS */
-
-.control-card img {
-  max-height: 12vh !important;
-  object-fit: contain;
-}
-
-.control-card h2 {
+#controlView #controlContent h2 {
   font-size: 16px !important;
   margin: 2px 0 !important;
 }
 
-.control-card p {
+#controlView #controlContent .lead {
   font-size: 12px !important;
   line-height: 1.05 !important;
   margin: 3px 0 !important;
 }
 
-.control-card small {
-  font-size: 10px !important;
-}
-
-.control-card .choice {
+#controlView #controlContent .choice {
   padding: 3px !important;
 }
-/* CONTROL - RECUPERAR TAMAÑO DE IMAGENES */
 
-#controlContent > img {
-  height: 12vh !important;
-  max-height: 12vh !important;
-}
-
-#controlContent .choice img {
-  height: 11vh !important;
-  max-height: 11vh !important;
+#controlView #controlContent .choice small {
+  font-size: 10px !important;
 }
