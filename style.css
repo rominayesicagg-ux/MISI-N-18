@@ -240,3 +240,14 @@ button {
 .control-card .choice {
   padding: 3px !important;
 }
+/* CONTROL - RECUPERAR TAMAÑO DE IMAGENES */
+
+#controlContent > img {
+  height: 12vh !important;
+  max-height: 12vh !important;
+}
+
+#controlContent .choice img {
+  height: 11vh !important;
+  max-height: 11vh !important;
+}
