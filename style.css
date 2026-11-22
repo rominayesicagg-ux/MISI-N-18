@@ -146,3 +146,37 @@ button {
   min-height: 36px;
   padding: 6px 10px;
 }
+/* AJUSTE FINAL DE ALTURA */
+
+.view h1,
+.view h2 {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.view .kicker {
+  margin: 3px 0;
+}
+
+.view .big-number {
+  margin: 2px 0;
+}
+
+.view .choice-grid {
+  margin-top: 3px;
+  gap: 4px;
+}
+
+.view .choice {
+  padding: 3px;
+}
+
+.view .choice img {
+  height: 8vh !important;
+  max-height: 8vh;
+}
+
+.view button {
+  min-height: 30px;
+  padding: 4px 8px;
+}
