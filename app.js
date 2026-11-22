@@ -145,7 +145,7 @@ function renderControl(s) {
         <img src="${presentacion}" alt="Presentación del desafío"
           style="width:100%;max-width:500px;border-radius:12px;margin:12px auto;display:block;">
 
- <table style="width:100%;table-layout:fixed;border-collapse:collapse;">
+<table style="width:100%;table-layout:fixed;border-collapse:collapse;display:table;">
   <tr>
     <td style="width:50%;padding:5px;vertical-align:top;">
       <img src="${opcionA}" alt="Opción A" style="display:block;width:100%;height:auto;border-radius:10px;">
