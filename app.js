@@ -145,14 +145,16 @@ function renderControl(s) {
         <img src="${presentacion}" alt="Presentación del desafío"
           style="width:100%;max-width:500px;border-radius:12px;margin:12px auto;display:block;">
 
-   <div style="display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px;width:100%;">
-  <div style="width:50%;min-width:0;">
-    <img src="${opcionA}" alt="Opción A" style="width:100%;height:auto;border-radius:10px;">
-  </div>
-  <div style="width:50%;min-width:0;">
-    <img src="${opcionB}" alt="Opción B" style="width:100%;height:auto;border-radius:10px;">
-  </div>
-</div>
+ <table style="width:100%;table-layout:fixed;border-collapse:collapse;">
+  <tr>
+    <td style="width:50%;padding:5px;vertical-align:top;">
+      <img src="${opcionA}" alt="Opción A" style="display:block;width:100%;height:auto;border-radius:10px;">
+    </td>
+    <td style="width:50%;padding:5px;vertical-align:top;">
+      <img src="${opcionB}" alt="Opción B" style="display:block;width:100%;height:auto;border-radius:10px;">
+    </td>
+  </tr>
+</table>
 
         <div class="control-buttons">
           ${l[2].map((c,i) => `<button class="${i===1?"secondary":""}" data-choice="${c}" ${s.choice?"disabled":""}>${c}</button>`).join("")}
