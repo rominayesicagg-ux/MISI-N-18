@@ -75,34 +75,7 @@ function speak(text) {
 }
 
 
-function renderControl(s) {
-  renderScreen(s);
-
-  controlContent.innerHTML = screenContent.innerHTML;
-controlContent.querySelectorAll("img").forEach((img, index) => {
-  img.style.setProperty("height", index === 0 ? "14vh" : "13vh", "important");
-  img.style.setProperty("max-height", index === 0 ? "14vh" : "13vh", "important");
-  img.style.setProperty("object-fit", "contain", "important");
-});
-
-controlContent.querySelectorAll("h2").forEach(el => {
-  el.style.setProperty("font-size", "15px", "important");
-});
-
-controlContent.querySelectorAll(".lead, p").forEach(el => {
-  el.style.setProperty("font-size", "11px", "important");
-  el.style.setProperty("line-height", "1.05", "important");
-});
-
-controlContent.querySelectorAll(".choice small").forEach(el => {
-  el.style.setProperty("font-size", "9px", "important");
-});
-  const start = controlContent.querySelector("#screen-start");
-  if (start) {
-    start.onclick = () => performAction("start");
-  }
-
-  controlContent.querySelectorAll("[data-choice]").forEach(b => {
+ controlContent.querySelectorAll("[data-choice]").forEach(b => {
     b.onclick = () => performAction("choose", {
       choice: b.dataset.choice
     });
@@ -112,16 +85,16 @@ controlContent.querySelectorAll(".choice small").forEach(el => {
   if (next) {
     next.onclick = () => performAction("next");
   }
-const reset = controlContent.querySelector("#screen-reset");
-if (reset) {
-  reset.onclick = () => {
-    if (confirm("¿Querés reiniciar la misión desde el principio?")) {
-      performAction("reset");
-    }
-  };
-}  
+
+  const reset = controlContent.querySelector("#screen-reset");
+  if (reset) {
+    reset.onclick = () => {
+      if (confirm("¿Querés reiniciar la misión desde el principio?")) {
+        performAction("reset");
+      }
+    };
+  }
 }
- 
 async function performAction(action, extra = {}) {
   try {
     await runTransaction(stateRef, current => {
@@ -277,7 +250,7 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
     <div style="height:4px;"></div>
     <div class="meter"><span style="width:${pct}%"></span></div>
     <img src="${presentacion}" alt="Presentación del desafío ${n}"
-    style="display:block;width:100%;height:17vh;object-fit:contain;margin:5px auto;">
+   style="display:block;width:100%;height:22vh;object-fit:contain;margin:2px auto;">
     <div class="kicker">NIVEL ${String(n).padStart(2,"0")}</div>
     <h2>${l[0]}</h2>
     <p class="lead">${l[1]}</p>
@@ -285,15 +258,14 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
   <div class="choice">
     <small>OPCIÓN 01</small>
     <img src="${opcionA}" alt="${l[2][0]}"
-    style="width:100%;height:16vh;object-fit:contain;">
+   style="width:100%;height:19vh;object-fit:contain;">
     <strong>${l[2][0]}</strong>
     <button data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>
   </div>
   <div class="choice">
     <small>OPCIÓN 02</small>
     <img src="${opcionB}" alt="${l[2][1]}"
-     style="width:100%;height:16vh;object-fit:contain;">
-    <strong>${l[2][1]}</strong>
+    style="width:100%;height:19vh;object-fit:contain;">
     <button data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>
   </div>
 </div>
