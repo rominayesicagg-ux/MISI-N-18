@@ -163,7 +163,10 @@ function renderControl(s) {
       </div>`;
 
     controlContent.querySelectorAll("[data-choice]").forEach(b => {
-      b.onclick = () => performAction("choose", {choice:b.dataset.choice});
+b.onclick = () => {
+  alert("Elegiste: " + b.dataset.choice);
+  performAction("choose", {choice:b.dataset.choice});
+};
     });
     document.getElementById("next").onclick = () => performAction("next");
   }
