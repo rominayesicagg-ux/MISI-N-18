@@ -323,9 +323,10 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
 
   screenContent.innerHTML = `
     <div class="big-number">DESAFÍO ${String(n).padStart(2,"0")} / 10</div>
+    <div style="height:4px;"></div>
     <div class="meter"><span style="width:${pct}%"></span></div>
     <img src="${presentacion}" alt="Presentación del desafío ${n}"
-      style="display:block;width:100%;max-height:38vh;object-fit:contain;margin:20px auto;">
+      style="display:block;width:100%;height:25vh;object-fit:contain;margin:5px auto;"
     <div class="kicker">NIVEL ${String(n).padStart(2,"0")}</div>
     <h2>${l[0]}</h2>
     <p class="lead">${l[1]}</p>
@@ -333,13 +334,13 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
       <div class="choice">
         <small>OPCIÓN 01</small>
         <img src="${opcionA}" alt="${l[2][0]}"
-          style="width:100%;max-height:30vh;object-fit:contain;">
+        style="width:100%;height:22vh;object-fit:contain;"
         <strong>${l[2][0]}</strong>
       </div>
       <div class="choice">
         <small>OPCIÓN 02</small>
         <img src="${opcionB}" alt="${l[2][1]}"
-          style="width:100%;max-height:30vh;object-fit:contain;">
+          style="width:100%;height:22vh;object-fit:contain;"
         <strong>${l[2][1]}</strong>
       </div>
     </div>
