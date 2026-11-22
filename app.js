@@ -147,13 +147,13 @@ function renderControl(s) {
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:900px;margin:20px auto;align-items:start;">
   <div style="display:flex;flex-direction:column;align-items:stretch;">
-    <div style="height:220px;display:flex;align-items:center;justify-content:center;">
+    <div style="height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
       <img src="${opcionA}" alt="Opción A" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">
     </div>
     ${l[2][0] ? `<button style="width:100%;min-height:55px;margin-top:10px;" data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>` : ""}
   </div>
   <div style="display:flex;flex-direction:column;align-items:stretch;">
-    <div style="height:220px;display:flex;align-items:center;justify-content:center;">
+  <div style="height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
       <img src="${opcionB}" alt="Opción B" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">
     </div>
     ${l[2][1] ? `<button style="width:100%;min-height:55px;margin-top:10px;" class="secondary" data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>` : ""}
