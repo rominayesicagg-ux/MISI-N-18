@@ -145,14 +145,18 @@ function renderControl(s) {
         <img src="${presentacion}" alt="Presentación del desafío"
           style="width:100%;max-width:500px;border-radius:12px;margin:12px auto;display:block;">
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;">
-  <div>
-    <img src="${opcionA}" alt="Opción A" style="display:block;width:100%;height:auto;border-radius:10px;">
-    ${l[2][0] ? `<button style="width:100%;margin-top:10px;" data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>` : ""}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:900px;margin:20px auto;align-items:start;">
+  <div style="display:flex;flex-direction:column;align-items:stretch;">
+    <div style="height:220px;display:flex;align-items:center;justify-content:center;">
+      <img src="${opcionA}" alt="Opción A" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">
+    </div>
+    ${l[2][0] ? `<button style="width:100%;min-height:55px;margin-top:10px;" data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>` : ""}
   </div>
-  <div>
-    <img src="${opcionB}" alt="Opción B" style="display:block;width:100%;height:auto;border-radius:10px;">
-    ${l[2][1] ? `<button style="width:100%;margin-top:10px;" class="secondary" data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>` : ""}
+  <div style="display:flex;flex-direction:column;align-items:stretch;">
+    <div style="height:220px;display:flex;align-items:center;justify-content:center;">
+      <img src="${opcionB}" alt="Opción B" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">
+    </div>
+    ${l[2][1] ? `<button style="width:100%;min-height:55px;margin-top:10px;" class="secondary" data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>` : ""}
   </div>
 </div>
 
