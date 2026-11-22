@@ -74,38 +74,6 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
-function renderScreenOriginal(s) {
-  document.getElementById("connection").textContent = "ENLACE ACTIVO";
-
-  if (!s.started) {
-    screenContent.innerHTML = `
-      <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
-      <h1>MISIÓN <span>18</span></h1>
-      <p class="lead">AGENTE AGUSTÍN. UNA TRANSMISIÓN ESPECIAL ESTÁ POR COMENZAR.</p>
-      <div class="final-mark">PREPARANDO<br>OPERACIÓN</div>`;
-  } else if (s.finished) {
-    screenContent.innerHTML = `
-      <div class="kicker">TRANSMISIÓN FINAL</div>
-      <div class="final-mark">OPERACIÓN<br>FINALIZADA</div>
-      <h2>¡FELICES 18, AGUSTÍN!</h2>
-      <p class="lead">SALÍ Y DESCUBRÍ LO QUE TE ESTÁ ESPERANDO.</p>
-      <div class="big-number">3 · 2 · 1</div>
-      <p class="lead">FIN DE LA TRANSMISIÓN</p>`;
-  } else {
-    const l = levels[s.level];
-    const pct = (s.level + 1) * 10;
-    screenContent.innerHTML = `
-      <div class="big-number">DESAFÍO ${String(s.level+1).padStart(2,"0")} / 10</div>
-      <div class="meter"><span style="width:${pct}%"></span></div>
-      <div class="kicker">NIVEL ${String(s.level+1).padStart(2,"0")}</div>
-      <h2>${l[0]}</h2>
-      <p class="lead">${l[1]}</p>
-      <div class="choice-grid">
-        ${l[2].map((c,i) => `<div class="choice"><small>OPCIÓN 0${i+1}</small><strong>${c}</strong></div>`).join("")}
-      </div>
-      ${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}`;
-  }
-}
 
 function renderControl(s) {
   if (!s.started) {
@@ -291,17 +259,17 @@ onAuthStateChanged(auth, user => {
 });
 
 
-function renderScreen(s) {
-  document.getElementById("connection").textContent = "ENLACE ACTIVO";
-
-  if (!s.started) {
-    screenContent.innerHTML = `
-      <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
-      <h1>MISIÓN <span>18</span></h1>
-      <p class="lead">AGENTE AGUSTÍN. UNA TRANSMISIÓN ESPECIAL ESTÁ POR COMENZAR.</p>
-      <div class="final-mark">PREPARANDO<br>OPERACIÓN</div>`;
-    return;
-  }
+if (!s.started) {
+  screenContent.innerHTML = `
+    <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
+    <h1>MISIÓN <span>18</span></h1>
+    <p class="lead">AGENTE AGUSTÍN. UNA TRANSMISIÓN ESPECIAL ESTÁ POR COMENZAR.</p>
+    <div class="final-mark">PREPARANDO<br>OPERACIÓN</div>
+    <button id="screen-start">INICIAR MISIÓN</button>`;
+  document.getElementById("screen-start").onclick = () => performAction("start");
+  return;
+}
+   
 
   if (s.finished) {
     screenContent.innerHTML = `
@@ -326,24 +294,37 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
     <div style="height:4px;"></div>
     <div class="meter"><span style="width:${pct}%"></span></div>
     <img src="${presentacion}" alt="Presentación del desafío ${n}"
-      style="display:block;width:100%;height:25vh;object-fit:contain;margin:5px auto;"
+    style="display:block;width:100%;height:25vh;object-fit:contain;margin:5px auto;">
     <div class="kicker">NIVEL ${String(n).padStart(2,"0")}</div>
     <h2>${l[0]}</h2>
     <p class="lead">${l[1]}</p>
-    <div class="choice-grid">
-      <div class="choice">
-        <small>OPCIÓN 01</small>
-        <img src="${opcionA}" alt="${l[2][0]}"
-        style="width:100%;height:22vh;object-fit:contain;"
-        <strong>${l[2][0]}</strong>
-      </div>
-      <div class="choice">
-        <small>OPCIÓN 02</small>
-        <img src="${opcionB}" alt="${l[2][1]}"
-          style="width:100%;height:22vh;object-fit:contain;"
-        <strong>${l[2][1]}</strong>
-      </div>
-    </div>
-    ${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}
+   <div class="choice-grid">
+  <div class="choice">
+    <small>OPCIÓN 01</small>
+    <img src="${opcionA}" alt="${l[2][0]}"
+      style="width:100%;height:22vh;object-fit:contain;">
+    <strong>${l[2][0]}</strong>
+    <button data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>
+  </div>
+  <div class="choice">
+    <small>OPCIÓN 02</small>
+    <img src="${opcionB}" alt="${l[2][1]}"
+      style="width:100%;height:22vh;object-fit:contain;">
+    <strong>${l[2][1]}</strong>
+    <button data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>
+  </div>
+</div>
+
+<button id="screen-next" ${s.choice?"":"disabled"}>
+  ${s.level===9?"FINALIZAR MISIÓN":"SIGUIENTE DESAFÍO"}
+</button>
+
+${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}
   `;
+
+  screenContent.querySelectorAll("[data-choice]").forEach(b => {
+    b.onclick = () => performAction("choose", {choice:b.dataset.choice});
+  });
+
+  document.getElementById("screen-next").onclick = () => performAction("next");
 }
