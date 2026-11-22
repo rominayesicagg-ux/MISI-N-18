@@ -50,3 +50,57 @@ button:disabled{opacity:.35;cursor:not-allowed}
   border-color: #ef3340 !important;
   color: #ffffff;
 }
+/* AJUSTE PARA QUE TODO ENTRE EN UNA PANTALLA */
+
+.view {
+  margin-top: 0;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+}
+
+.lead {
+  margin: 12px 0;
+  line-height: 1.25;
+}
+
+.screen-foot {
+  margin-top: 12px;
+  padding-top: 8px;
+}
+
+.choice-grid {
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.choice {
+  min-height: 100px;
+  padding: 14px 16px;
+}
+
+.control-head {
+  margin: 1vh auto 12px;
+}
+
+.control-card {
+  padding: 14px;
+}
+
+.control-card h2 {
+  margin-bottom: 8px;
+}
+
+.control-card p {
+  line-height: 1.25;
+}
+
+.control-buttons {
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.control-buttons button {
+  min-height: 52px;
+}
