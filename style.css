@@ -125,3 +125,24 @@ button:disabled{opacity:.35;cursor:not-allowed}
 .control-buttons button {
   min-height: 42px;
 }
+}
+
+.choice img {
+  height: 10vh !important;
+  max-height: 10vh;
+}
+
+.lead {
+  margin: 4px 0;
+  line-height: 1.1;
+}
+
+.screen-foot {
+  margin-top: 4px;
+  padding-top: 3px;
+}
+
+button {
+  min-height: 36px;
+  padding: 6px 10px;
+}
