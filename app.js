@@ -74,17 +74,28 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
+function renderControl(s) {
+  renderScreen(s);
+  controlContent.innerHTML = screenContent.innerHTML;
 
- controlContent.querySelectorAll("[data-choice]").forEach(b => {
+  controlContent.querySelectorAll("img").forEach((img, index) => {
+    img.style.setProperty("height", index === 0 ? "23vh" : "20vh", "important");
+    img.style.setProperty("max-height", index === 0 ? "23vh" : "20vh", "important");
+    img.style.setProperty("width", "100%", "important");
+    img.style.setProperty("object-fit", "contain", "important");
+  });
+
+  const start = controlContent.querySelector("#screen-start");
+  if (start) start.onclick = () => performAction("start");
+
+  controlContent.querySelectorAll("[data-choice]").forEach(b => {
     b.onclick = () => performAction("choose", {
       choice: b.dataset.choice
     });
   });
 
   const next = controlContent.querySelector("#screen-next");
-  if (next) {
-    next.onclick = () => performAction("next");
-  }
+  if (next) next.onclick = () => performAction("next");
 
   const reset = controlContent.querySelector("#screen-reset");
   if (reset) {
@@ -95,7 +106,6 @@ function speak(text) {
     };
   }
 }
-async function performAction(action, extra = {}) {
   try {
     await runTransaction(stateRef, current => {
       const s = current || {...defaultState};
