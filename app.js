@@ -156,9 +156,7 @@ function renderControl(s) {
   </div>
 </div>
 
-        <div class="control-buttons">
-      ${""}
-        </div>
+        
 
         <div class="status">${s.choice ? "ELECCIÓN REGISTRADA: "+s.choice : "ELEGÍ UNA OPCIÓN PARA CONTINUAR"}</div>
         <button id="next" ${s.choice?"":"disabled"}>${s.level===9?"FINALIZAR MISIÓN":"SIGUIENTE DESAFÍO"}</button>
