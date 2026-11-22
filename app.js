@@ -295,7 +295,7 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
     <div style="height:4px;"></div>
     <div class="meter"><span style="width:${pct}%"></span></div>
     <img src="${presentacion}" alt="Presentación del desafío ${n}"
-    style="display:block;width:100%;height:25vh;object-fit:contain;margin:5px auto;">
+    style="display:block;width:100%;height:17vh;object-fit:contain;margin:5px auto;">
     <div class="kicker">NIVEL ${String(n).padStart(2,"0")}</div>
     <h2>${l[0]}</h2>
     <p class="lead">${l[1]}</p>
