@@ -95,10 +95,14 @@ function renderControl(s) {
   if (next) {
     next.onclick = () => performAction("next");
   }
-   const reset = controlContent.querySelector("#screen-reset");
-  if (reset) {
-    reset.onclick = () => performAction("reset");
-  }
+const reset = controlContent.querySelector("#screen-reset");
+if (reset) {
+  reset.onclick = () => {
+    if (confirm("¿Querés reiniciar la misión desde el principio?")) {
+      performAction("reset");
+    }
+  };
+}  
 }
  
 async function performAction(action, extra = {}) {
@@ -280,6 +284,9 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
 <button id="screen-next" ${s.choice?"":"disabled"}>
   ${s.level===9?"FINALIZAR MISIÓN":"SIGUIENTE DESAFÍO"}
 </button>
+<button id="screen-reset" class="secondary">
+  REINICIAR MISIÓN
+</button>
 
 ${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}
   `;
@@ -288,5 +295,11 @@ ${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}
     b.onclick = () => performAction("choose", {choice:b.dataset.choice});
   });
 
-  document.getElementById("screen-next").onclick = () => performAction("next");
+ document.getElementById("screen-next").onclick = () => performAction("next");
+
+  document.getElementById("screen-reset").onclick = () => {
+    if (confirm("¿Querés reiniciar la misión desde el principio?")) {
+      performAction("reset");
+    }
+  };
 }
