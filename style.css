@@ -45,3 +45,8 @@ button:disabled{opacity:.35;cursor:not-allowed}
 .login-card button{margin-top:22px;width:100%}
 .error{color:#ff8b93;min-height:20px;font-size:13px}
 @media(max-width:650px){.app{padding:16px}.view{margin-top:6vh}.choice-grid{grid-template-columns:1fr;gap:12px}.choice{min-height:115px;padding:20px}.screen-foot{font-size:9px}.control-head h1{font-size:58px}}
+.choice-grid .choice {
+  background-color: #ef3340 !important;
+  border-color: #ef3340 !important;
+  color: #ffffff;
+}
