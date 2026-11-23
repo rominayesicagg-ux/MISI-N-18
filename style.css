@@ -200,9 +200,9 @@ button {
 }
 
 #controlView #controlContent .lead {
-  font-size: 12px !important;
-  line-height: 1.05 !important;
-  margin: 3px 0 !important;
+  font-size: clamp(17px, 2.2vw, 25px) !important;
+  line-height: 1.25 !important;
+  margin: 6px 0 !important;
 }
 
 #controlView #controlContent .choice {
