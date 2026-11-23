@@ -270,10 +270,10 @@ function renderScreen(s) {
       </div>
 
       <div class="final-mark" id="introStatus">RECIBIENDO TRANSMISIÓN...</div>
-     <button id="screen-start">COMENZAR MISIÓN</button>
+      <button id="screen-start" hidden>COMENZAR MISIÓN</button>
     `;
 
- const start = screenContent.querySelector("#screen-start");
+    const start = screenContent.querySelector("#screen-start");
     if (start) start.onclick = () => performAction("start");
 
     if (screenContent.dataset.introEventId !== introId) {
@@ -302,7 +302,8 @@ function renderScreen(s) {
 
     return;
   }
-     if (s.finished) {
+
+  if (s.finished) {
     screenContent.innerHTML = `
       <div class="kicker">TRANSMISIÓN FINAL</div>
       <div class="final-mark">OPERACIÓN<br>FINALIZADA</div>
