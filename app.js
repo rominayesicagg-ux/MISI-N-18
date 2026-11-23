@@ -75,8 +75,10 @@ function speak(text, onStart, onEnd) {
 
   const play = () => {
     const voices = speechSynthesis.getVoices();
-    const voice = voices.find(v => v.lang.toLowerCase() === "es-ar") ||
-                  voices.find(v => v.lang.toLowerCase().startsWith("es"));
+   const voice = voices.find(v => v.lang.toLowerCase() === "es-ar") ||
+              voices.find(v => v.lang.toLowerCase() === "es-es") ||
+              voices.find(v => v.lang.toLowerCase() === "es-us") ||
+              voices.find(v => v.lang.toLowerCase().startsWith("es"));
 
     if (voice) u.voice = voice;
 
