@@ -70,24 +70,38 @@ function speak(text, onStart, onEnd) {
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "es-AR";
   u.rate = 0.86;
-  u.pitch = 0.72;
+  u.pitch = 0.85;
   u.volume = 1;
 
-  const voices = speechSynthesis.getVoices();
-  const voice = voices.find(v => v.lang.toLowerCase().startsWith("es-ar")) ||
-                voices.find(v => v.lang.toLowerCase().startsWith("es"));
+  const play = () => {
+    const voices = speechSynthesis.getVoices();
+    const voice = voices.find(v => v.lang.toLowerCase() === "es-ar") ||
+                  voices.find(v => v.lang.toLowerCase().startsWith("es"));
 
-  if (voice) u.voice = voice;
+    if (voice) u.voice = voice;
 
-  u.onstart = () => {
-    if (onStart) onStart();
+    u.onstart = () => {
+      if (onStart) onStart();
+    };
+
+    u.onend = () => {
+      if (onEnd) onEnd();
+    };
+
+    u.onerror = (event) => {
+      console.log("Error de audio:", event.error);
+      if (onEnd) onEnd();
+    };
+
+    speechSynthesis.speak(u);
   };
 
-  u.onend = () => {
-    if (onEnd) onEnd();
-  };
-
-  speechSynthesis.speak(u);
+  if (speechSynthesis.getVoices().length) {
+    play();
+  } else {
+    speechSynthesis.onvoiceschanged = play;
+    speechSynthesis.getVoices();
+  }
 }
 
 function renderControl(s) {
