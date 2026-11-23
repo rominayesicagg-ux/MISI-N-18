@@ -235,6 +235,28 @@ button {
   font-weight: 800 !important;
   letter-spacing: .12em;
 }
+.audio-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 95%;
+  height: 180px;
+  margin: 30px auto;
+  overflow: visible;
+}
+
+.audio-wave span {
+  display: block;
+  flex: 1;
+  max-width: 13px;
+  height: 35px;
+  border-radius: 8px;
+  background: #39a9ff;
+  opacity: 0.5;
+  transform-origin: center;
+}
+
 .audio-wave.speaking span {
   animation: soundWave .65s ease-in-out infinite alternate;
   opacity: 1;
@@ -255,42 +277,4 @@ button {
 
 #screen-start[hidden] {
   display: none;
-}
-.audio-wave {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  height: 65px;
-  margin: 25px auto;
-  overflow: visible;
-}
-
-.audio-wave span {
-  display: block;
-  width: 4px;
-  height: 12px;
-  border-radius: 5px;
-  background: #39a9ff;
-  opacity: 0.35;
-  transform: scaleY(1);
-  transform-origin: center;
-}
-
-.audio-wave.speaking span {
-  animation: soundWave .65s ease-in-out infinite alternate;
-  opacity: 1;
-}
-
-.audio-wave.speaking span:nth-child(3n) {
-  animation-duration: .42s;
-}
-
-.audio-wave.speaking span:nth-child(3n + 1) {
-  animation-duration: .8s;
-}
-
-@keyframes soundWave {
-  from { transform: scaleY(.3); }
-  to { transform: scaleY(5); }
 }
