@@ -232,29 +232,48 @@ onAuthStateChanged(auth, user => {
 });
 
 function renderScreen(s) {
-   speak(
-      "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos. Diez decisiones. Una misión. ¿Estás preparado?",
-      () => {
-        document.getElementById("audioWave")?.classList.add("speaking");
-      },
-      () => {
-        document.getElementById("audioWave")?.classList.remove("speaking");
-        const status = document.getElementById("introStatus");
-        const button = document.getElementById("screen-start");
+  if (!s.started) {
+    const introId = String(s.event_id || 0);
 
-        if (status) status.textContent = "TRANSMISIÓN COMPLETADA";
-        if (button) button.hidden = false;
-      }
-    );
+    screenContent.innerHTML = `
+      <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
+      <h1>MISIÓN <span>18</span></h1>
+      <p class="lead">AGENTE AGUSTÍN. UNA TRANSMISIÓN ESPECIAL ESTÁ POR COMENZAR.</p>
 
-    document.getElementById("screen-start").onclick = () => performAction("start");
+      <div class="audio-wave" id="audioWave">
+        ${Array.from({length: 35}, () => "<span></span>").join("")}
+      </div>
+
+      <div class="final-mark" id="introStatus">RECIBIENDO TRANSMISIÓN...</div>
+      <button id="screen-start" ${isControl ? "" : "hidden"}>COMENZAR MISIÓN</button>
+    `;
+
+    const start = screenContent.querySelector("#screen-start");
+    if (start) start.onclick = () => performAction("start");
+
+    if (!isControl && screenContent.dataset.introEventId !== introId) {
+      screenContent.dataset.introEventId = introId;
+
+      speak(
+        "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos. Diez decisiones. Una misión. ¿Estás preparado?",
+        () => {
+          document.getElementById("audioWave")?.classList.add("speaking");
+        },
+        () => {
+          document.getElementById("audioWave")?.classList.remove("speaking");
+          const status = document.getElementById("introStatus");
+          const button = document.getElementById("screen-start");
+
+          if (status) status.textContent = "TRANSMISIÓN COMPLETADA";
+          if (button) button.hidden = false;
+        }
+      );
+    }
+
+    return;
   }
 
-  return;
-}
-   
-
- if (s.finished) {
+  if (s.finished) {
     screenContent.innerHTML = `
       <div class="kicker">TRANSMISIÓN FINAL</div>
       <div class="final-mark">OPERACIÓN<br>FINALIZADA</div>
@@ -262,15 +281,18 @@ function renderScreen(s) {
       <p class="lead">SALÍ Y DESCUBRÍ LO QUE TE ESTÁ ESPERANDO.</p>
       <div class="big-number">3 · 2 · 1</div>
       <p class="lead">FIN DE LA TRANSMISIÓN</p>
-      <button id="screen-reset" class="secondary">REINICIAR MISIÓN</button>`;
+      <button id="screen-reset" class="secondary">REINICIAR MISIÓN</button>
+    `;
+
     document.getElementById("screen-reset").onclick = () => performAction("reset");
     return;
   }
+
   const n = s.level + 1;
   const l = levels[s.level];
-const presentacion = encodeURI(`presentacion desafio ${n}.jpg`);
-const opcionA = encodeURI(`desafio ${n}-a.jpg`);
-const opcionB = encodeURI(`desafio ${n}-b.jpg`);
+  const presentacion = encodeURI(`presentacion desafio ${n}.jpg`);
+  const opcionA = encodeURI(`desafio ${n}-a.jpg`);
+  const opcionB = encodeURI(`desafio ${n}-b.jpg`);
   const pct = n * 10;
 
   screenContent.innerHTML = `
@@ -278,42 +300,39 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
     <div style="height:4px;"></div>
     <div class="meter"><span style="width:${pct}%"></span></div>
     <img src="${presentacion}" alt="Presentación del desafío ${n}"
-   style="display:block;width:100%;height:22vh;object-fit:contain;margin:2px auto;">
+      style="display:block;width:100%;height:22vh;object-fit:contain;margin:2px auto;">
     <div class="kicker">NIVEL ${String(n).padStart(2,"0")}</div>
     <h2>${l[0]}</h2>
     <p class="lead">${l[1]}</p>
-   <div class="choice-grid">
-  <div class="choice">
-    <small>OPCIÓN 01</small>
-   <img src="${opcionA}" alt="${l[2][0]}"
-  style="width:100%;max-height:30vh;object-fit:contain;">
-    <strong>${l[2][0]}</strong>
-    <button data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>
-  </div>
-  <div class="choice">
-    <small>OPCIÓN 02</small>
-   <img src="${opcionB}" alt="${l[2][1]}"
-  style="width:100%;max-height:30vh;object-fit:contain;">
-  <strong>${l[2][1]}</strong>
-    <button data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>
-  </div>
-</div>
+    <div class="choice-grid">
+      <div class="choice">
+        <small>OPCIÓN 01</small>
+        <img src="${opcionA}" alt="${l[2][0]}"
+          style="width:100%;max-height:30vh;object-fit:contain;">
+        <strong>${l[2][0]}</strong>
+        <button data-choice="${l[2][0]}" ${s.choice ? "disabled" : ""}>${l[2][0]}</button>
+      </div>
+      <div class="choice">
+        <small>OPCIÓN 02</small>
+        <img src="${opcionB}" alt="${l[2][1]}"
+          style="width:100%;max-height:30vh;object-fit:contain;">
+        <strong>${l[2][1]}</strong>
+        <button data-choice="${l[2][1]}" ${s.choice ? "disabled" : ""}>${l[2][1]}</button>
+      </div>
+    </div>
 
-<button id="screen-next" ${s.choice?"":"disabled"}>
-  ${s.level===9?"FINALIZAR MISIÓN":"SIGUIENTE DESAFÍO"}
-</button>
-<button id="screen-reset" class="secondary">
-  REINICIAR MISIÓN
-</button>
-
-${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}
+    <button id="screen-next" ${s.choice ? "" : "disabled"}>
+      ${s.level === 9 ? "FINALIZAR MISIÓN" : "SIGUIENTE DESAFÍO"}
+    </button>
+    <button id="screen-reset" class="secondary">REINICIAR MISIÓN</button>
+    ${s.choice ? `<p class="status">DECISIÓN REGISTRADA: ${s.choice}</p>` : ""}
   `;
 
   screenContent.querySelectorAll("[data-choice]").forEach(b => {
-    b.onclick = () => performAction("choose", {choice:b.dataset.choice});
+    b.onclick = () => performAction("choose", {choice: b.dataset.choice});
   });
 
- document.getElementById("screen-next").onclick = () => performAction("next");
+  document.getElementById("screen-next").onclick = () => performAction("next");
 
   document.getElementById("screen-reset").onclick = () => {
     if (confirm("¿Querés reiniciar la misión desde el principio?")) {
