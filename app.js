@@ -106,6 +106,8 @@ function renderControl(s) {
     };
   }
 }
+
+async function performAction(action, extra = {}) {
   try {
     await runTransaction(stateRef, current => {
       const s = current || {...defaultState};
