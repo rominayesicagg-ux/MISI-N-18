@@ -59,6 +59,15 @@ const defaultState = {
   finished: false
 };
 
+function speak(text, onStart, onEnd) {
+  if (!("speechSynthesis" in window)) {
+    if (onEnd) onEnd();
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const u = new SpeechSynthesisUtterance(text);
   u.lang = "es-AR";
   u.rate = 0.86;
   u.pitch = 0.72;
