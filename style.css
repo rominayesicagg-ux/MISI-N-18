@@ -212,3 +212,6 @@ button {
 #controlView #controlContent .choice small {
   font-size: 10px !important;
 }
+#controlView {
+  zoom: 0.92;
+}
