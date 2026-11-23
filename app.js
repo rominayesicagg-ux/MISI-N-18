@@ -261,15 +261,15 @@ const opcionB = encodeURI(`desafio ${n}-b.jpg`);
    <div class="choice-grid">
   <div class="choice">
     <small>OPCIÓN 01</small>
-    <img src="${opcionA}" alt="${l[2][0]}"
-  style="width:100%;max-height:30vh;object-fit:contain;"
+   <img src="${opcionA}" alt="${l[2][0]}"
+  style="width:100%;max-height:30vh;object-fit:contain;">
     <strong>${l[2][0]}</strong>
     <button data-choice="${l[2][0]}" ${s.choice?"disabled":""}>${l[2][0]}</button>
   </div>
   <div class="choice">
     <small>OPCIÓN 02</small>
-    <img src="${opcionB}" alt="${l[2][1]}"
-  style="width:100%;max-height:30vh;object-fit:contain;"
+   <img src="${opcionB}" alt="${l[2][1]}"
+  style="width:100%;max-height:30vh;object-fit:contain;">
     <button data-choice="${l[2][1]}" ${s.choice?"disabled":""}>${l[2][1]}</button>
   </div>
 </div>
