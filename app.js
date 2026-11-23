@@ -265,7 +265,7 @@ function renderScreen(s) {
     const start = screenContent.querySelector("#screen-start");
     if (start) start.onclick = () => performAction("start");
 
-    if (!isControl && screenContent.dataset.introEventId !== introId) {
+   if (screenContent.dataset.introEventId !== introId) {
       screenContent.dataset.introEventId = introId;
 
       speak(
