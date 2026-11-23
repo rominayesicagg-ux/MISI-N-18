@@ -112,10 +112,12 @@ speechSynthesis.cancel();
 function renderControl(s) {
   renderScreen(s);
   controlContent.innerHTML = screenContent.innerHTML;
-const controlWave = controlContent.querySelector("#audioWave");
+if (!s.started) {
+  const controlStatus = controlContent.querySelector("#introStatus");
+  const controlStart = controlContent.querySelector("#screen-start");
 
-if (controlWave) {
-  controlWave.classList.add("speaking");
+  if (controlStatus) controlStatus.textContent = "LISTO PARA COMENZAR";
+  if (controlStart) controlStart.hidden = false;
 }
   const start = controlContent.querySelector("#screen-start");
   if (start) start.onclick = () => performAction("start");
@@ -294,10 +296,15 @@ if (screenContent.dataset.introEventId !== introId) {
             null,
             () => {
               document.getElementById("audioWave")?.classList.remove("speaking");
-              const status = document.getElementById("introStatus");
-              const button = document.getElementById("screen-start");
-              if (status) status.textContent = "TRANSMISIÓN COMPLETADA";
-              if (button) button.hidden = false;
+            const status = document.getElementById("introStatus");
+const button = document.getElementById("screen-start");
+const controlStatus = controlContent.querySelector("#introStatus");
+const controlButton = controlContent.querySelector("#screen-start");
+
+if (status) status.textContent = "TRANSMISIÓN COMPLETADA";
+if (button) button.hidden = false;
+if (controlStatus) controlStatus.textContent = "TRANSMISIÓN COMPLETADA";
+if (controlButton) controlButton.hidden = false;
             }
           );
         }
