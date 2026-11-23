@@ -263,7 +263,7 @@ function renderScreen(s) {
       </div>
 
       <div class="final-mark" id="introStatus">RECIBIENDO TRANSMISIÓN...</div>
-      <button id="screen-start" ${isControl ? "" : "hidden"}>COMENZAR MISIÓN</button>
+     <button id="screen-start">COMENZAR MISIÓN</button>
     `;
 
     const start = screenContent.querySelector("#screen-start");
