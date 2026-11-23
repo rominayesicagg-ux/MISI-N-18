@@ -171,9 +171,7 @@ function listenToGame() {
       if (s.event_id !== lastEvent) {
         lastEvent = s.event_id;
 
-        if (s.last_event === "start") {
-          speak("Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos. Diez decisiones. Una misión. ¿Estás preparado?");
-        } else if (s.last_event === "choice") {
+      if (s.last_event === "choice") {
           speak("Decisión registrada. No hay respuestas incorrectas, agente. Preparáte para el siguiente desafío.");
         } else if (s.last_event === "next" && s.level >= 0) {
           speak(levels[s.level][0] + ". " + levels[s.level][1]);
