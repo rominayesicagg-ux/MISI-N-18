@@ -138,9 +138,9 @@ button:disabled{opacity:.35;cursor:not-allowed}
   line-height: 1.1;
 }
 
-.screen-foot {
+.view {
   margin-top: 0;
-  padding-top: 0;
+  zoom: 0.96;
 }
 button {
   min-height: 36px;
