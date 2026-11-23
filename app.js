@@ -275,7 +275,7 @@ function renderScreen(s) {
       screenContent.dataset.introEventId = introId;
 
       speak(
-        "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar.Diez desafíos. Diez decisiones. Una misión. Te esperan para comenzar la aventura. ¿Estás preparado?
+        "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar.Diez desafíos. Diez decisiones. Una misión. Te esperan para comenzar la aventura. ¿Estás preparado?;
         () => {
           document.getElementById("audioWave")?.classList.add("speaking");
         },
