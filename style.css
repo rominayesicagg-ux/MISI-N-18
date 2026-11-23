@@ -125,11 +125,10 @@ button:disabled{opacity:.35;cursor:not-allowed}
 .control-buttons button {
   min-height: 42px;
 }
-}
 
 .choice img {
-  height: 10vh !important;
-  max-height: 10vh;
+  height: auto !important;
+  max-height: 30vh !important;
 }
 
 .lead {
@@ -172,8 +171,8 @@ button {
 }
 
 .view .choice img {
-  height: 8vh !important;
-  max-height: 8vh;
+  height: auto !important;
+  max-height: 30vh !important;
 }
 
 .view button {
@@ -189,8 +188,8 @@ button {
 }
 
 #controlView #controlContent .choice img {
-  height: 13vh !important;
-  max-height: 13vh !important;
+  height: auto !important;
+  max-height: 30vh !important;
   object-fit: contain !important;
 }
 
