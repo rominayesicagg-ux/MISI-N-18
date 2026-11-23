@@ -235,3 +235,24 @@ button {
   font-weight: 800 !important;
   letter-spacing: .12em;
 }
+.audio-wave.speaking span {
+  animation: soundWave .65s ease-in-out infinite alternate;
+  opacity: 1;
+}
+
+.audio-wave.speaking span:nth-child(3n) {
+  animation-duration: .42s;
+}
+
+.audio-wave.speaking span:nth-child(3n + 1) {
+  animation-duration: .8s;
+}
+
+@keyframes soundWave {
+  from { transform: scaleY(.3); }
+  to { transform: scaleY(5); }
+}
+
+#screen-start[hidden] {
+  display: none;
+}
