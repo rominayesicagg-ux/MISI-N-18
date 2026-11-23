@@ -78,13 +78,6 @@ function renderControl(s) {
   renderScreen(s);
   controlContent.innerHTML = screenContent.innerHTML;
 
-  controlContent.querySelectorAll("img").forEach((img, index) => {
-    img.style.setProperty("height", index === 0 ? "23vh" : "20vh", "important");
-    img.style.setProperty("max-height", index === 0 ? "23vh" : "20vh", "important");
-    img.style.setProperty("width", "100%", "important");
-    img.style.setProperty("object-fit", "contain", "important");
-  });
-
   const start = controlContent.querySelector("#screen-start");
   if (start) start.onclick = () => performAction("start");
 
@@ -106,7 +99,6 @@ function renderControl(s) {
     };
   }
 }
-
 async function performAction(action, extra = {}) {
   try {
     await runTransaction(stateRef, current => {
