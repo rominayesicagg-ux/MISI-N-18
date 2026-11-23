@@ -190,23 +190,23 @@ function listenToGame() {
       return;
     }
 
-    if (isControl) {
-      renderControl(s);
-    } else {
-      renderScreen(s);
+  if (isControl) {
+  renderControl(s);
+} else {
+  renderScreen(s);
+}
 
-      if (s.event_id !== lastEvent) {
-        lastEvent = s.event_id;
+if (s.event_id !== lastEvent) {
+  lastEvent = s.event_id;
 
-      if (s.last_event === "choice") {
-          speak("Decisión registrada. No hay respuestas incorrectas, agente. Preparáte para el siguiente desafío.");
-        } else if (s.last_event === "next" && s.level >= 0) {
-          speak(levels[s.level][0] + ". " + levels[s.level][1]);
-        } else if (s.last_event === "finish") {
-          speak("Agente Agustín. Misión cumplida. Dieciocho años. Una nueva aventura comienza. Tres... dos... uno... Salí y descubrí lo que te está esperando. Felices dieciocho.");
-        }
-      }
-    }
+  if (s.last_event === "choice") {
+    speak("Decisión registrada. No hay respuestas incorrectas, agente. Preparáte para el siguiente desafío.");
+  } else if (s.last_event === "next" && s.level >= 0) {
+    speak(levels[s.level][0] + ". " + levels[s.level][1]);
+  } else if (s.last_event === "finish") {
+    speak("Agente Agustín. Misión cumplida. Dieciocho años. Una nueva aventura comienza. Tres... dos... uno... Salí y descubrí lo que te está esperando. Felices dieciocho.");
+  }
+} 
   }, error => {
     console.error(error);
     const connection = document.getElementById("connection");
