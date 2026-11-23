@@ -276,29 +276,23 @@ function renderScreen(s) {
     const start = screenContent.querySelector("#screen-start");
     if (start) start.onclick = () => performAction("start");
 
-    if (screenContent.dataset.introEventId !== introId) {
-      screenContent.dataset.introEventId = introId;
+   if (screenContent.dataset.introEventId !== introId) {
+  screenContent.dataset.introEventId = introId;
 
-      speak(
-        "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos.",
-        () => {
-          document.getElementById("audioWave")?.classList.add("speaking");
-        },
-        () => {
-          speak(
-            "Diez decisiones. Una misión. Te esperan para comenzar la aventura. ¿Estás preparado?",
-            null,
-            () => {
-              document.getElementById("audioWave")?.classList.remove("speaking");
-              const status = document.getElementById("introStatus");
-              const button = document.getElementById("screen-start");
-              if (status) status.textContent = "TRANSMISIÓN COMPLETADA";
-              if (button) button.hidden = false;
-            }
-          );
-        }
-      );
+  speak(
+    "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos. Diez decisiones. Una misión. Te esperan para comenzar la aventura. ¿Estás preparado?",
+    () => {
+      document.getElementById("audioWave")?.classList.add("speaking");
+    },
+    () => {
+      document.getElementById("audioWave")?.classList.remove("speaking");
+      const status = document.getElementById("introStatus");
+      const button = document.getElementById("screen-start");
+      if (status) status.textContent = "TRANSMISIÓN COMPLETADA";
+      if (button) button.hidden = false;
     }
+  );
+}
 
     return;
   }
