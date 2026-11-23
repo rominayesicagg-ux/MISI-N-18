@@ -28,7 +28,7 @@ const stateRef = ref(db, "rooms/mision18");
 
 const levels = [
 ["EL COMIENZO","Toda gran aventura comienza con una decisión. ¿Qué tipo de agente vas a ser?",["EXPLORADOR","AGENTE SECRETO"]],
-["LA ENERGÍA","La misión exige estar preparado. Cada movimiento cuenta. Elegí cómo enfrentar el desafío.",["ADRENALINA","TRANQUILIDAD"]],
+["LA ENERGÍA","La misión exige estar . Cada movimiento cuenta. Elegí cómo enfrentar el desafío.",["ADRENALINA","TRANQUILIDAD"]],
 ["EL INSTINTO","No siempre hay tiempo para pensar. A veces, la primera decisión es la más importante.",["PENSAR RÁPIDO","SEGUIR LA INTUICIÓN"]],
 ["EL CAMINO","El destino todavía es desconocido. Solo hay una forma de descubrir qué te espera.",["EL DESCONOCIDO","EL INESPERADO"]],
 ["EL ÚLTIMO PASO","Llegaste hasta acá. Ahora es momento de demostrar de qué estás hecho.",["IR POR TODO","SIN MIRAR ATRÁS"]],
@@ -275,7 +275,7 @@ function renderScreen(s) {
       screenContent.dataset.introEventId = introId;
 
       speak(
-        "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos. Diez decisiones. Una misión. Te esperan para comenzar la aventura. ¿Estás preparado?",
+        "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos. Diez decisiones. Una misión, Te esperan para comenzar la aventura. ¿Estás preparado?",
         () => {
           document.getElementById("audioWave")?.classList.add("speaking");
         },
