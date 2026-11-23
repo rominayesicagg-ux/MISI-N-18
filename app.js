@@ -59,18 +59,25 @@ const defaultState = {
   finished: false
 };
 
-function speak(text) {
-  if (!("speechSynthesis" in window)) return;
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
   u.lang = "es-AR";
   u.rate = 0.86;
   u.pitch = 0.72;
   u.volume = 1;
+
   const voices = speechSynthesis.getVoices();
   const voice = voices.find(v => v.lang.toLowerCase().startsWith("es-ar")) ||
                 voices.find(v => v.lang.toLowerCase().startsWith("es"));
+
   if (voice) u.voice = voice;
+
+  u.onstart = () => {
+    if (onStart) onStart();
+  };
+
+  u.onend = () => {
+    if (onEnd) onEnd();
+  };
+
   speechSynthesis.speak(u);
 }
 
