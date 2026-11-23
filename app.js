@@ -199,11 +199,13 @@ function listenToGame() {
 if (s.event_id !== lastEvent) {
   lastEvent = s.event_id;
 
-  if (s.last_event === "choice") {
-    speak("Decisión registrada. No hay respuestas incorrectas, agente. Preparáte para el siguiente desafío.");
-  } else if (s.last_event === "next" && s.level >= 0) {
-    speak(levels[s.level][0] + ". " + levels[s.level][1]);
-  } else if (s.last_event === "finish") {
+ if (s.last_event === "start") {
+  speak(levels[0][0] + ". " + levels[0][1]);
+} else if (s.last_event === "choice") {
+  speak("Decisión registrada. No hay respuestas incorrectas, agente. Preparáte para el siguiente desafío.");
+} else if (s.last_event === "next" && s.level >= 0) {
+  speak(levels[s.level][0] + ". " + levels[s.level][1]);
+} else if (s.last_event === "finish") {
     speak("Agente Agustín. Misión cumplida. Dieciocho años. Una nueva aventura comienza. Tres... dos... uno... Salí y descubrí lo que te está esperando. Felices dieciocho.");
   }
 } 
