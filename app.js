@@ -107,7 +107,11 @@ function speak(text, onStart, onEnd) {
 function renderControl(s) {
   renderScreen(s);
   controlContent.innerHTML = screenContent.innerHTML;
+const controlWave = controlContent.querySelector("#audioWave");
 
+if (controlWave) {
+  controlWave.classList.add("speaking");
+}
   const start = controlContent.querySelector("#screen-start");
   if (start) start.onclick = () => performAction("start");
 
