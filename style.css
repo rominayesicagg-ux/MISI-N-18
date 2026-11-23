@@ -195,7 +195,7 @@ button {
 }
 
 #controlView #controlContent h2 {
-  font-size: 42px !important;
+  font-size: clamp(48px, 8vw, 100px) !important;
   margin: 2px 0 !important;
 }
 
