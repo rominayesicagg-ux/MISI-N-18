@@ -225,14 +225,24 @@ onAuthStateChanged(auth, user => {
 });
 
 function renderScreen(s) {
-if (!s.started) {
-  screenContent.innerHTML = `
-    <div class="kicker">PROTOCOLO DE OPERACIONES ESPECIALES</div>
-    <h1>MISIÓN <span>18</span></h1>
-    <p class="lead">AGENTE AGUSTÍN. UNA TRANSMISIÓN ESPECIAL ESTÁ POR COMENZAR.</p>
-    <div class="final-mark">PREPARANDO<br>OPERACIÓN</div>
-    <button id="screen-start">INICIAR MISIÓN</button>`;
-  document.getElementById("screen-start").onclick = () => performAction("start");
+   speak(
+      "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado. Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos. Diez decisiones. Una misión. ¿Estás preparado?",
+      () => {
+        document.getElementById("audioWave")?.classList.add("speaking");
+      },
+      () => {
+        document.getElementById("audioWave")?.classList.remove("speaking");
+        const status = document.getElementById("introStatus");
+        const button = document.getElementById("screen-start");
+
+        if (status) status.textContent = "TRANSMISIÓN COMPLETADA";
+        if (button) button.hidden = false;
+      }
+    );
+
+    document.getElementById("screen-start").onclick = () => performAction("start");
+  }
+
   return;
 }
    
