@@ -80,7 +80,10 @@ function speak(text, onStart, onEnd) {
               voices.find(v => v.lang.toLowerCase() === "es-us") ||
               voices.find(v => v.lang.toLowerCase().startsWith("es"));
 
-    if (voice) u.voice = voice;
+  if (voice) {
+  u.voice = voice;
+  u.lang = voice.lang;
+}
 
     u.onstart = () => {
       if (onStart) onStart();
