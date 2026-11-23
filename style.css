@@ -163,8 +163,8 @@ button {
 }
 
 .view .choice-grid {
-  margin-top: 3px;
-  gap: 4px;
+  margin-top: 0;
+  gap: 2px;
 }
 
 .view .choice {
