@@ -215,3 +215,17 @@ button {
 #controlView {
   zoom: 0.92;
 }
+.choice strong {
+  display: block;
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 28px !important;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  margin: 5px 0;
+}
+
+#controlView .choice strong {
+  font-size: 28px !important;
+}
