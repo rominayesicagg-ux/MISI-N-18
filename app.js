@@ -323,8 +323,8 @@ if (controlButton) controlButton.hidden = false;
       <div class="kicker">TRANSMISIÓN FINAL</div>
       <div class="final-mark">OPERACIÓN<br>FINALIZADA</div>
       <h2>¡FELICES 18, AGUSTÍN!</h2>
-      <p class="lead">SALÍ Y DESCUBRÍ LO QUE TE ESTÁ ESPERANDO.</p>
       <div class="big-number">3 · 2 · 1</div>
+      <p class="lead">SALÍ Y DESCUBRÍ LO QUE TE ESTÁ ESPERANDO.</p>
       <p class="lead">FIN DE LA TRANSMISIÓN</p>
       <button id="screen-reset" class="secondary">REINICIAR MISIÓN</button>
     `;
