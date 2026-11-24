@@ -114,13 +114,7 @@ speechSynthesis.cancel();
 function renderControl(s) {
   renderScreen(s);
   controlContent.innerHTML = screenContent.innerHTML;
-if (!s.started) {
-  const controlStatus = controlContent.querySelector("#introStatus");
-  const controlStart = controlContent.querySelector("#screen-start");
 
-  if (controlStatus) controlStatus.textContent = "LISTO PARA COMENZAR";
-  if (controlStart) controlStart.hidden = false;
-}
   const start = controlContent.querySelector("#screen-start");
   if (start) start.onclick = () => performAction("start");
 
@@ -243,17 +237,9 @@ loginForm.addEventListener("submit", async event => {
 onAuthStateChanged(auth, user => {
   if (user) {
     loginView.classList.add("hidden");
-
-    if (isControl) {
-      controlView.classList.remove("hidden");
-      screenView.classList.add("hidden");
-      welcomeView.classList.add("hidden");
-      listenToGame();
-    } else {
-      welcomeView.classList.remove("hidden");
-      screenView.classList.add("hidden");
-      controlView.classList.add("hidden");
-    }
+    welcomeView.classList.remove("hidden");
+    screenView.classList.add("hidden");
+    controlView.classList.add("hidden");
   } else {
     loginView.classList.remove("hidden");
     welcomeView.classList.add("hidden");
@@ -261,9 +247,19 @@ onAuthStateChanged(auth, user => {
     controlView.classList.add("hidden");
   }
 });
-welcomeStart.addEventListener("click", () => {
+
+welcomeStart.addEventListener("click", async () => {
   welcomeView.classList.add("hidden");
-  screenView.classList.remove("hidden");
+
+  if (isControl) {
+    controlView.classList.remove("hidden");
+    screenView.classList.add("hidden");
+  } else {
+    screenView.classList.remove("hidden");
+    controlView.classList.add("hidden");
+  }
+
+  await performAction("reset");
   listenToGame();
 });
 function renderScreen(s) {
