@@ -43,6 +43,8 @@ const isControl = new URLSearchParams(location.search).get("view") === "control"
 const loginView = document.getElementById("loginView");
 const screenView = document.getElementById("screenView");
 const controlView = document.getElementById("controlView");
+const welcomeView = document.getElementById("welcomeView");
+const welcomeStart = document.getElementById("welcomeStart");
 const screenContent = document.getElementById("screenContent");
 const controlContent = document.getElementById("controlContent");
 const loginForm = document.getElementById("loginForm");
@@ -245,19 +247,25 @@ onAuthStateChanged(auth, user => {
     if (isControl) {
       controlView.classList.remove("hidden");
       screenView.classList.add("hidden");
+      welcomeView.classList.add("hidden");
+      listenToGame();
     } else {
-      screenView.classList.remove("hidden");
+      welcomeView.classList.remove("hidden");
+      screenView.classList.add("hidden");
       controlView.classList.add("hidden");
     }
-
-    listenToGame();
   } else {
     loginView.classList.remove("hidden");
+    welcomeView.classList.add("hidden");
     screenView.classList.add("hidden");
     controlView.classList.add("hidden");
   }
 });
-
+welcomeStart.addEventListener("click", () => {
+  welcomeView.classList.add("hidden");
+  screenView.classList.remove("hidden");
+  listenToGame();
+});
 function renderScreen(s) {
   if (!s.started) {
     const introId = String(s.event_id || 0);
