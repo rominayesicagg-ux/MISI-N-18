@@ -284,8 +284,9 @@ if (screenContent.dataset.introEventId !== introId) {
   speak(
     "Atención... Atención... Agente Agustín, si estás escuchando este mensaje, significa que has sido seleccionado.",
     () => {
-      document.getElementById("audioWave")?.classList.add("speaking");
-    },
+  screenContent.querySelector("#audioWave")?.classList.add("speaking");
+  controlContent.querySelector("#audioWave")?.classList.add("speaking");
+},
     () => {
       speak(
         "Hoy no es un día cualquiera. Una nueva etapa está por comenzar. Diez desafíos.",
@@ -295,7 +296,8 @@ if (screenContent.dataset.introEventId !== introId) {
             "Diez decisiones. Una misión. Te esperan para comenzar la aventura. ¿Estás preparado?",
             null,
             () => {
-              document.getElementById("audioWave")?.classList.remove("speaking");
+             screenContent.querySelector("#audioWave")?.classList.remove("speaking");
+controlContent.querySelector("#audioWave")?.classList.remove("speaking");
             const status = document.getElementById("introStatus");
 const button = document.getElementById("screen-start");
 const controlStatus = controlContent.querySelector("#introStatus");
